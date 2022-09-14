@@ -143,7 +143,8 @@ The dsPIC33CK Low Voltage Motor Control (LVMC) Development Board is a cost-effec
 
 #### IoT Control with both BLE and Zigbee <a name="step2c3"></a>
 
-WBZ45x Curiosity board
+The PIC32CXBZ2 SoC and WBZ45x Module enable IoT (Internet of Things) wireless connectivity by providing low power devices with certified radio technologies such as BLE 5.2 along with IEEE 802.15.4 radio in a single chip solution. The WBZ45x module enables users to interact with Bluetooth and/or IEEE 802.15.4 networks.
+
 * <a href="https://www.microchip.com/en-us/development-tool/EA71C53A" target="_blank">WBZ45x landing page</a>
 * <a href="https://github.com/MicrochipTech/EA71C53A" target="_blank">WBZ45x SDK</a>
 
@@ -264,7 +265,7 @@ Using MPLAB® IPE v6.0 :
 - Hit the 'Program' button
 
 <p align="center">
-<img src="images/WBZ45x_IPE_setup.png" width=480>
+<img src="images/WBZ45x_IPE_Setup.png" width=480>
 </p>
 
 #### Starting from the Out of the box example
