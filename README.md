@@ -16,13 +16,9 @@ alt="Wi-Fi provisioning over BLE demo based on WFI32 Curiosity board developed w
 </p>
 -->
 
-
-
 <p align="center">
 <img src="images/demo_main.png" width=640>
 </p>
-
-
 
 <p align="center">
 <img src="images/demo_purpose.png" width=640>
@@ -39,16 +35,6 @@ For additional Microchip repos, see: <a href="https://github.com/Microchip-MPLAB
 Checkout the <a href="https://microchipsupport.force.com/s/" target="_blank">Technical support portal</a> to access our knowledge base, community forums or submit support ticket requests.
 </span></p></b>
 
-## Description
-
-<!--Describe the purpose of the solution, the added value for our clients : The WHY
-
-Describe how it works pratically, how it could be implemented to make easy & fast for our client while keeping System robustness : The HOW
-
-Describe the content of this solution, taking full leverage of our products, what we sell: The WHAT
--->
-...
-
 ## A la carte
 
 1. <font size="6">[Facts and challenge of Access Control](#step1)</font>
@@ -62,27 +48,37 @@ Describe the content of this solution, taking full leverage of our products, wha
       1. [AI/ML Face Recognition](#step2c1)
       1. [BLDC Motor Control](#step2c2)
       1. [Voice and remote Control](#step2c3)
-1. <font size="6">[Do It Yourself](#step3)</font>
-   1. [Bill of materials](#step3a)
-   1. [Mechanical Setup](#step3b)
-   1. [Motor Setup](#step3c)
-   1. [Hardware Setup](#step3d)
-   1. [Software Setup for the WBZ45x](#step3e)
-   1. [Software Setup for the dsPIC33CK](#step3f)
-   1. [Software Setup for the PolarFire FPGA](#step3g)
-1. <font size="6">[Run the demo](#step4)</font>
-1. <font size="6">[FAQ](#step5)</font>
+1. <font size="6">[Assemble the existing demo](#step3)</font>
+1. <font size="6">[Do It Yourself](#step4)</font>
+   1. [Bill of materials](#step4a)
+   1. [Mechanical Setup](#step4b)
+   1. [Motor Setup](#step4c)
+   1. [Hardware Setup](#step4d)
+   1. [Software Setup for the WBZ45x](#step4e)
+   1. [Software Setup for the dsPIC33CK](#step4f)
+   1. [Software Setup for the PolarFire FPGA](#step4g)
+   1. [Cloud Setup](#step4h)
+1. <font size="6">[Run the demo](#step5)</font>
+1. <font size="6">[FAQ](#step6)</font>
 
 
 ## Facts and challenges of Access Control <a name="step1"></a>
 
-...
+In the market, security and safety must be warranty with no compromise. Checking who is present in a particular location, at what time, are the childs are at home and back from school ? In the industrial area, protect people from critical devices is key. So to ensure security and safety, it is needed to perform sensing and report the information.
+
+Sensing can be done through object detection or person detection with a powerful device and Microchip offers several solutions in that way. 
+- Solutions with microprocessor such as [SAMA5D2](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/32-bit-mpus/sama5/sama5d2-series) or [SAMA7G54](https://www.microchip.com/en-us/product/sama7g54)
+- Solutions with FPGA such as [PolarFire](https://www.microchip.com/en-us/products/fpgas-and-plds/fpgas/polarfire-fpgas)
+
+For this demo, we have selected the [PolarFire FPGA](https://www.microchip.com/en-us/products/fpgas-and-plds/fpgas/polarfire-fpgas) for sensing the persons and took benefit from the [PolarFire FPGA Video and Imaging Kit with MPF300T Device](https://www.microchip.com/en-us/development-tool/MPF300-VIDEO-KIT-NS) with AI and ML capabilities.
+
+Reporting the information can be done through different ways. And here we have selected to use wireless technology and the WBZ451 module for the capability to support Bluetooth Low Energy and Zigbee connectivity simultaneously.
+
 
 <a href="#top">Back to top</a>
 
-## Our solution: "IoT Solutions for Access Control" <a name="step2"></a>
 
-...
+## Our solution: "IoT Solutions for Access Control" <a name="step2"></a>
 
 ### System architecture <a name="step2a"></a>
 
@@ -99,16 +95,17 @@ Describe the content of this solution, taking full leverage of our products, wha
 
 #### Smart Home <a name="step2b1"></a>
 
-...
-
+Typical use case for Smart Home and illustrated by this demo: face recognition is required to open the garage door, disarm the home alarm and turn ON the lights.
 
 #### Smart Building <a name="step2b2"></a>
 
-...
+For Smart Building, access control with a granted access could be required to enter into a building.
+
+That enable another use case which is the energy management with a smart lighting system which turn ON the lights if a person is authorized to enter into the building.
 
 #### Industry 4.0 <a name="step2b3"></a>
 
-...
+For Industrial plant, access control with recognition could be necessary to check if a person is authorized and if he has the requested equipment to operate on a machine. For example, the user must wear the helmet.
 
 ### Technology Bricks <a name="step2c"></a>
 
@@ -148,11 +145,129 @@ The PIC32CXBZ2 SoC and WBZ45x Module enable IoT (Internet of Things) wireless co
 * <a href="https://www.microchip.com/en-us/development-tool/EA71C53A" target="_blank">WBZ45x landing page</a>
 * <a href="https://github.com/MicrochipTech/EA71C53A" target="_blank">WBZ45x SDK</a>
 
+
 <a href="#top">Back to top</a>
 
-## Do It Yourself <a name="step3"></a>
 
-### Bill of materials <a name="step3a"></a>
+## Assemble the existing demo <a name="step3"></a>
+
+To assemble the demo from the suitcase, you should follow the steps below.
+
+- First, take the bottom plexiglass piece (the one with the motor) and the dsPIC33CK LVMC board. With a screw driver, plug the motor wires according the following table.
+
+<p align="center">
+<img src="images/Motor_connection_tab.png" width=640>
+</p>
+
+-  Then use 4x M3-nuts to fix it on the plexiglass, you could hide wires under the board.
+
+<p align="center">
+<img src="images/mount1.png" width=480>
+</p>
+
+- Fix the WBZ451 Curiosity board to the bottom plexiglass piece with 3x M2-nuts.
+
+<p align="center">
+<img src="images/mount2.png" width=240>
+<img src="images/mount3.png" width=240>
+</p>
+
+- Assemble the vertical plexiglass piece with 2 brackets, 4 M3-screws and 4 M3-nuts. Use M3-awl key (the larger one).
+
+<p align="center">
+<img src="images/mount4.png" width=240>
+</p>
+
+- Assemble the door and fix it to the top plexiglass piece :
+  - Take the top plegiglass piece, the smooth rod, the threaded rod, 4 long M3-screws and 4 M3-nuts. 
+  - Make sure to fix the rods correctly, the side with the large hole is for the smooth rod. 
+  - When it is assemble and if you have the threaded rod in front of you, you should have a larger amount of plexiglass on your left.
+
+<p align="center">
+<img src="images/mount5.png" width=480>
+<img src="images/mount6.png" width=240>
+</p>
+
+- Then take the door and screw it into the threaded rod, then put the coupling beam and fix it to the threaded rod with the M2-awl key (the smaller one).
+
+<p align="center">
+<img src="images/mount7.png" width=480>
+<img src="images/mount8.png" width=240>
+</p>
+
+- Now fix the door to the structure using 3 brackets, 6x M3-screws and 6x M3-nuts.
+  - Do not forget to plug the smooth rod into the small hole into the bottom plexiglass piece (there is two hole close to each other, choose the bottom left one).
+
+<p align="center">
+<img src="images/mount9.png" width=480>
+<img src="images/mount10.png" width=240>
+<img src="images/mount11.png" width=320>
+</p>
+
+- Then fix the coupling beam to the motor with the M2-awl key.
+
+- Finally, plug the cameras into the dual-MIPS connector on the MPF300 video kit, camera facing out of the board.
+
+- Then fix it to the top plexiglass piece using 4x M3-screws. Make sure that the camera is facing out of the demo.
+
+The demo is not ready yet, you have to connect the boards through wires according to this tab :
+
+<p align="center">
+<img src="images/Connections_tab.png" width=640>
+</p>
+
+Now, let's connect the detection switches to the LVMC board.
+
+- Connect the switches to the dsPIC33CK LVMC board, the top one to click-A pin SDA and to GND, and the bottom one to click-B pin TX and GND.
+
+<p align="center">
+<img src="images/wire1.png" width=240>
+</p>
+
+Now, let's add wires to connect the WBZ451 board to the LVMC board.
+
+- Plug the commands wires between the WBZ451 Curiosity board and the dsPIC33CK LVMC board. WBZ451 click pin SDA to dsPIC33CK click-A pin SCL and WBZ451 click pin SCL to dsPIC33CK click-A pin RX.
+
+<p align="center">
+<img src="images/wire2.png" width=240>
+</p>
+
+- Connect 3V3 and GND pins from dsPIC33CK to WBZ451 in order to power the WBZ451 Curiosity from the LVMC board.
+
+<p align="center">
+<img src="images/wire3.png" width=240>
+</p>
+
+- Plug the black wire and the white wire (that are attached to motor wires) to GND and PWM pins of the WBZ451 mikroBus connector from one side. In the next step, both wires will be connected to MPF300.
+
+<p align="center">
+<img src="images/wire4.png" width=240>
+</p>
+
+- And connect the same wires (black and white) to the MPF300 MIPS connector
+  - GND (black wire) to A9 of the MPF300 MIPS connector
+  - PWM (white wire) to A1 of the MPF300 MIPS connector
+
+<p align="center">
+<img src="images/wire5.png" width=240>
+</p>
+
+The door is now ready.
+
+- Power up the MPF300 video kit with 12V power supply
+- Power up the dsPIC33CK LVMC with 9V power supply
+- Power the Amazon Echo
+- Make sure your Amazon Echo is connected to your Wi-Fi Home network. Checkout [here](https://www.amazon.com/gp/help/customer/display.html?nodeId=GKC33PUJZTSDWQK6) for guidance.
+ and the dsPIC33CK LVMC with 9V power supply. Power also the echo and attach it to 
+ - Go to <a href="#step5">Run the demo</a> section.
+
+
+<a href="#top">Back to top</a>
+
+
+## Do It Yourself <a name="step4"></a>
+
+### Bill of materials <a name="step4a"></a>
 
 #### Microchip Development Board
 
@@ -172,9 +287,18 @@ Purchase the following development boards:
 - [Ball bearing](https://fr.rs-online.com/web/p/roulements-a-billes/6190036)
 - [flange bearing](https://euro-makers.com/fr/roulements-a-billes/2592-httpeuro-makerscomroulements-a-billes2592-rou-plapkfl08html-3701172915174.html)
 
+*Remark: One of the garage door piece (black plastic piece) is not refered and should be reproduced with a 3D printer to replicate the demo*
+
 #### Structure
 
 - [Plexiglass (PMMA)](https://www.leroymerlin.fr/produits/menuiserie/panneau-bois-tablette-etagere-tasseau-moulure-et-plinthe/verre-verre-synthetique-et-accessoires/verre-et-plaque-polystyrene/plaque-pmma-5-mm-rouge-mat-l-100-x-50-cm-80120003.html)
+- 4x long M3-screws
+- 18x M3-screws
+- 4x M2-screws
+- 22x M3-nuts
+- 16x M2-nuts
+- 5x brackets
+
 
 #### Connectors and power supply
 
@@ -188,14 +312,17 @@ Purchase the following development boards:
 
 - [Amazon Echo](https://www.amazon.fr/nouvel-echo-4e-generation-avec-son-premium-hub-connecte-et-alexa-anthracite/dp/B085FXHR38)
 - [Philips Hue bulb](https://www.amazon.fr/Philips-connect%C3%A9e-Equivalent-Compatible-Bluetooth/dp/B099P3CP1K)
-- A power strip with 4/5 plugs
+- A protected power strip with 4/5 plugs
+- A Wi-Fi network provided by an Access-Point or a Router
+- A Smartphone with Microchip Bluetooth Data App installed
+- A display with HDMI input
+- WD40 lubricant should be consider to smooth the mechanic of the demo
 
-
-### Mechanical Setup <a name="step3b"></a>
+### Mechanical Setup <a name="step4b"></a>
 
 #### Door structure
 
-The structure of the door is composed of four plexiglass pieces. Brackets, screws and nuts are also required.
+The structure of the door is composed of four plexiglass pieces. Brackets, screws and nuts are also required. You will also need a screw driver and a drill. 
 
 - The bottom piece
 
@@ -221,18 +348,36 @@ The structure of the door is composed of four plexiglass pieces. Brackets, screw
 <img src="images/Door.png" width=320>
 </p>
 
-### Motor Setup <a name="step3c"></a>
+#### Prepare the plexiglass for assembly
 
-Plug the coupling beam, the threaded rod then the black piece and the "stop à bille". 
+- On the bottom plexiaglass piece, you need to create spacer fixation for dsPIC33CK and WBZ451 boards. Moreover, you need to fix the vertical plexiglass piece through brackets. 
+    - For WBZ451, drill 4 M2-holes and use M2-screws and M2-nuts to create spacers.
+    - For dsPIC33CK, drill 4 M3-holes and use M3-screws and M3-nuts to create spacers.
+    - To fix the bracket, drill 2 M3-holes and use M3-screws and M3-nuts to fix the brackets.
+- The vertical plexiglass piece need to be fixed to the bottom plexiglass piece and to the top plexiglass piece through brackets.
+    - On the top part, drill 3 M3-holes and use M3-screws and M3-nuts to fix the brackets.
+    - On the bottom part, drill 2 M3-holes and use M3-screws and M3-nuts to fix the brackets.
+- On the top piece, you need to fix the FPGA board through spacers, and you also need to fix it tho the vertical plexiglass piece.
+    - To fix the FPGA, drill 4 M3-holes and use M3-screws (nuts is not required here, you can screw in the FPGA fixations).
+    - Finaly, to fix the top piece to the vertical piece, drill 3 M3-holes and use M3-screws and M3-nuts to fix the brackets.
 
-On the other side of the door plug the ball bearing into the black piece, then the smooth rod into the ball bearing and finaly into the "stop à bille".
+### Motor Setup <a name="step4c"></a>
 
-### Hardware Setup <a name="step3d"></a>
+Plug the coupling beam, the threaded rod then the black piece and the flange bearing. Then plug the coupling beam into the motorand fix the motor to the bottom plexiglass piece. You can adjust the motor to the size of the vertical piece with the space you leave betwee the motor and the threaded rod inside the coupling beam.
+
+On the other side of the door plug the ball bearing into the black piece, then the smooth rod into the ball bearing and finaly into the flange bearing.
+
+Once the door set up, you should fix the two flange bearing to the top plexiglass piece through long M3-screws and nuts.
+
+### Hardware Setup <a name="step4d"></a>
 
 <p align="center">
 <img src="images/Connections.png" width=720>
 </p>
 
+<p align="center">
+<img src="images/Connections_tab.png" width=720>
+</p>
 
 <p align="center">
 <img src="images/fpga_board_top.png" width=320>
@@ -247,8 +392,7 @@ On the other side of the door plug the ball bearing into the black piece, then t
 </p>
 
 
-
-### Software Setup for the WBZ45x <a name="step3e"></a>
+### Software Setup for the WBZ45x <a name="step4e"></a>
 
 #### Software Content
 
@@ -310,7 +454,7 @@ Then generate the code and close MCC.
 Do not forget to add the prototype in *app_button_handler.h*
 - In *app_zigbee_handler.c* line 560, replace switch case **CMD_ZCL_ON** and **CMD_ZCL_OFF** with those in *app_zigbee_handler.txt*. This snippet of code correspond to the trigger of the motor with ZigBee connectivity.
 
-### Software Setup for the dsPIC33CK <a name="step3f"></a>
+### Software Setup for the dsPIC33CK <a name="step4f"></a>
 
 #### State machine
 
@@ -378,7 +522,7 @@ This code correspond to :
 - Some other functions used in the motor control state machine.
 
 
-### Software Setup for the PolarFire FPGA <a name="step3g"></a>
+### Software Setup for the PolarFire FPGA <a name="step4g"></a>
 
 #### Software content
 
@@ -517,9 +661,6 @@ Copy the entire code from the generated file *faceDb.c* and replace the correspo
 10. To run the Demo without Debug Interface, updated SoftConsole Project hex file should replace the existing FabricRAM hex file in the Libero SoC Project. For further details about how to program the FPGA and SPI Flash with the updated files, refer to the Section 5.2.2 in the below document.</br>
 [https://vector-blox-model-zoo.s3.us-west-2.amazonaws.com/Releases/VideoKit/vectorblox_videokit_v1.3.pdf](https://vector-blox-model-zoo.s3.us-west-2.amazonaws.com/Releases/VideoKit/vectorblox_videokit_v1.3.pdf)
 
-
-
-
 #### Flash the board
 
 Follow the documentation below to flash the board with the new images:
@@ -527,14 +668,136 @@ Follow the documentation below to flash the board with the new images:
 - Read the [Programmers Guide](https://github.com/Microchip-Vectorblox/VectorBlox-SDK/blob/master/docs/VectorBloxPG.pdf) and the [Demo Guide](https://vector-blox-model-zoo.s3.us-west-2.amazonaws.com/Releases/VideoKit/vectorblox_videokit_v1.3.pdf) to install the reference design
 
 
+### Cloud Setup <a name="step4h"></a>
+
+#### Amazon Echo setup
+
+- Power on the amazon echo and download the Alexa app on your smartphone.
+- Then, open Alexa app and under *add device* section, select *echo*. 
+- On your Echo, enter configuration mode by pressing the action switch during 10 seconds.
+- Then on the app, enter your access point SSID and password to configure your Echo.
+
+#### WBZ451 provisionning
+
+Once the Echo is configured, you can provision your WBZ451 device by asking *Alexa, discover my devices* or in the app by adding a device, selecting *light*.
+
+In the same time, on Microchip Bluetooth Data app, enter *BLE commissioning* section, launch a scan to find your WBZ451.
+
+Once the device selected, you can change the name and provision it.
+
+Start the provisionning and wait for 30 to 45 seconds.
+
+If the Echo found your WBZ451, it will automatically register it in the Alexa app as a light. Then you can go into *Device* select the new device and rename it *Garage door*.
+
+#### Add a Philips Hue light
+
+- Plug the Philips Hue bulbe into the light. 
+- Then discover the devices, the Philips light should slowly blink. 
+- Once the provisionning finished, the light should stay on. 
+- Then go into the Alexa app, into *Devices* section select *Light* and rename the new one *Philips light*. 
+
+#### Alexa routine
+
+On the Alexa app go into *Other* tab and select *Routines*. Create 4 new routines :
+
+- The first one is to open the door:
+    - Rename the routine *Open garage door*
+    - As input select *voice* and write down *Open garage door*.
+    - As action select *Home*, then *Light*, then *Garage door* and hit *next*. On the new section select *On* and validate.
+    - Add another action, select *Home*, then *Light*, then *Philips light* and hit *next*. On the new section select *Off* and validate.
+
+- The second one is to close the door:
+    - Rename the routine *Close garage door*
+    - As input select *voice* and write down *Close garage door*.
+    - Add another input, select *voice* and write down *Turn on Garage light*.
+    - As action select *Home*, then *Light*, then *Garage door* and hit *next*. On the new section select *Off* and validate.
+    - Add another action, select *Home*, then *Light*, then *Philips light* and hit *next*. On the new section select *On* and validate.
+
+- The third one is to turn on the light:
+    - Rename the routine *turn on garage light*
+    - As input select *voice* and write down *turn on garage light*.
+    - As action select *Home*, then *Light*, then *Garage door* and hit *next*. On the new section select *Off* and validate.
+    - Add another action, select *Home*, then *Light*, then *Philips light* and hit *next*. On the new section select *On* and validate.
+
+- The forth one is to turn off the light:
+    - Rename the routine *turn off garage light*
+    - As input select *voice* and write down *turn off garage light*.
+    - Add another input, select *voice* and write down *Turn on Garage light*.
+    - As action, select *Home*, then *Light*, then *Philips light* and hit *next*. On the new section select *Off* and validate.
+
+
 <a href="#top">Back to top</a>
 
-## Run the demo <a name="step4"></a>
+
+## Run the demo <a name="step5"></a>
+
+To lauch the demo, follow these steps :
+
+- Turn ON the FPGA board with the ON/OFF switch close to the power supply connector.
+- Go on Alexa app, make sure that the garage door is OFF (closed position).
+- Then, reset the WBZ451, application LED should be OFF. 
+- And reset the dsPIC33CK LVMC, if the door was not close, it should automatically close it.
+
+To trigger the door with face recognition feature, just pass in front of the camera.
+
+The vocal commands to trigger the door through Alexa are:
+
+- Alexa, open garage door
+- Alexa, close garage door
+- Alexa, turn on garage light
+- Alexa, turn off garage light
+
+To trigger the door via your smartphone:
+
+- Launch Microchip Bluetooth Data App
+- Go in the BLE sensor section, select PIC32CX-BZ2 then scan to find the WBZ451 device
+- Select the device that appear on the screen and now you can trigger it through BLE using the switch on the app.
+
+Use the visual indicators to monitor the behavior of the demo:
+
+- On WBZ451 Curiosity Board:
+   - Blue LED: indicate connection status ("Off" when connected).
+   - RGB LED: application LED.
+- On dsPIC33CK LVMC:
+   - 6 green LEDs in a row: indicate the motor status ("On" when motor is running).
+   - LED 10: indicate that the dsPIC has receive a UP command. Turn off when the door reach the top position.
+   - LED 11: indicate that the dsPIC has receive a DOWN command.Turn off when the door reach the bottom position.
+- On MPF300:
+   - On the screen, there is green squares when a person is recognized and blue squares when a the person is not recognized.
+
+HMI:
+
+- On WBZ451:
+   - Reset switch: left one when looking at the back of the door.
+   - Application switch: right one when looking at the back of the door.
+- On dsPIC33CK LVMC:
+   - Reset switch : in the center of the board.
+- On MPF300:
+   - On/Off switch: close to power supply connector.
 
 
 <a href="#top">Back to top</a>
 
-## FAQ <a name="step5"></a>
+## FAQ <a name="step6"></a>
+
+Here is the list of known issues:
+
+- The motor can have difficulties to go up. If the motor stop between the up and down position, either LED10 or LED11 will remain on. In this case the motor can receive any other command, you should perform a reset.
+- WBZ451 may lost ZigBee or BLE connection. In this case, you should perform a reset.
+- Sometime, after several usage of the door, the motor may fail (wrong direction or no start at all). It is recommended to perform a reset every 10 demo cycles.
+- After several Hours running, the FPGA may overheat, in this case the screen will freeze. The FPGA will need to be rebooted with the on/off switch next to the power supply connector. 
+
+Reset procedure:
+
+- On Alexa app, make sure that the garage door is Off (Closed position).
+- Reset the WBZ451, application LED should be Off.
+- Reset the dsPIC33CK LVMC, if the door was not close, it should automatically close it.
+
+Possible improvement items:
+
+- Implement bidirectional communication (e.g. UART) between WBZ451 Curiosity board and the dsPIC33CK to improve reliability of the demo
+- Review the motor state machine and make it more robust to not miss direction changes after several cycles
+- Make the mechanical parts of the demo more robust to reduce vibration and improve the door alignment during the go up and go down phases
 
 
 <a href="#top">Back to top</a>
