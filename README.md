@@ -95,13 +95,13 @@ Reporting the information can be done through different ways. And here we have s
 
 #### Smart Home <a name="step2b1"></a>
 
-Typical use case for Smart Home and illustrated by this demo: face recognition is required to open the garage door, disarm the home alarm and turn ON the lights.
+Typical use case for Smart Home is illustrated by this demo: face recognition is required to open the garage door, disarm the home alarm and turn ON the lights.
 
 #### Smart Building <a name="step2b2"></a>
 
 For Smart Building, access control with a granted access could be required to enter into a building.
 
-That enable another use case which is the energy management with a smart lighting system which turn ON the lights if a person is authorized to enter into the building.
+That enable another use case: the energy management with a smart lighting system turning ON the lights if a person is authorized to enter into the building.
 
 #### Industry 4.0 <a name="step2b3"></a>
 
@@ -218,6 +218,10 @@ The demo is not ready yet, you have to connect the boards through wires accordin
 
 Now, let's connect the detection switches to the LVMC board.
 
+<p align="center">
+<img src="images/Connections.png" width=720>
+</p>
+
 - Connect the switches to the dsPIC33CK LVMC board, the top one to click-A pin SDA and to GND, and the bottom one to click-B pin TX and GND.
 
 <p align="center">
@@ -257,9 +261,9 @@ The door is now ready.
 - Power up the MPF300 video kit with 12V power supply
 - Power up the dsPIC33CK LVMC with 9V power supply
 - Power the Amazon Echo
-- Make sure your Amazon Echo is connected to your Wi-Fi Home network. Checkout [here](https://www.amazon.com/gp/help/customer/display.html?nodeId=GKC33PUJZTSDWQK6) for guidance.
- and the dsPIC33CK LVMC with 9V power supply. Power also the echo and attach it to 
- - Go to <a href="#step5">Run the demo</a> section.
+- Make sure your Amazon Echo is connected to your Wi-Fi Home network. 
+  - Checkout [here](https://www.amazon.com/gp/help/customer/display.html?nodeId=GKC33PUJZTSDWQK6) for guidance.
+- Go to <a href="#step5">Run the demo</a> section.
 
 
 <a href="#top">Back to top</a>
@@ -783,6 +787,7 @@ HMI:
 Here is the list of known issues:
 
 - The motor can have difficulties to go up. If the motor stop between the up and down position, either LED10 or LED11 will remain on. In this case the motor can receive any other command, you should perform a reset.
+- WD40 lubricant should be consider to smooth the mechanic of the demo.
 - WBZ451 may lost ZigBee or BLE connection. In this case, you should perform a reset.
 - Sometime, after several usage of the door, the motor may fail (wrong direction or no start at all). It is recommended to perform a reset every 10 demo cycles.
 - After several Hours running, the FPGA may overheat, in this case the screen will freeze. The FPGA will need to be rebooted with the on/off switch next to the power supply connector. 
